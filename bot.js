@@ -214,7 +214,7 @@ client.on('message', function(msg) {
     .addField(':blue_circle: **__Online Members__**',`[** __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ **]`,true)
     .addField(':pencil:**__ Texting Channels __**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
     .addField(':microphone:**__ Voice Channels __**',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
-    .addField(':crown:**__ Ownership __**',`**${msg.guild.owner}**`,true)
+    .addField(':crown:**__ Ownership __**',`**Tbon Mok ;)**`,true)
     .addField(':id:**__ Sever ID __**',`**${msg.guild.id}**`,true)
     .addField(':date:**__ Creation of The server __**',msg.guild.createdAt.toLocaleString())
     msg.channel.send({embed:embed});
