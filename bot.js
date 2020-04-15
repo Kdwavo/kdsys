@@ -63,12 +63,12 @@ message.channel.sendEmbed(embed);
 /*blacklist*/
 
 client.on('guildMemberAdd', (mem1) => {
-             if ( (mem1.user.id == "653310475534336027") || (mem1.user.id == "668564648747860001") || (mem1.user.id == "697022685221486623") || (mem1.user.id == "") || (mem1.user.id == "563815999539904532")  || (mem1.user.id == "302761921269071872")|| (mem1.user.id == "546112099513008130")|| (mem1.user.id == "688852127841648671")|| (mem1.user.id == "579794073976569888")|| (mem1.user.id == "")){
+             if ( (mem1.user.id == "653310475534336027") || (mem1.user.id == "668564648747860001") || (mem1.user.id == "697022685221486623") || (mem1.user.id == "") || (mem1.user.id == "563815999539904532")  || (mem1.user.id == "302761921269071872")|| (mem1.user.id == "546112099513008130")|| (mem1.user.id == "688852127841648671")|| (mem1.user.id == "579794073976569888")|| (mem1.user.id == "457534096277766156"))|| (mem1.user.id == ""))|| (mem1.user.id == ""))|| (mem1.user.id == ""))|| (mem1.user.id == ""))|| (mem1.user.id == "")){
 		let chan = mem1.guild.channels.find( channel => channel.id === "620781295563177985");
-                chan.send("__**Warning :warning: :**__**This member ``" + mem1.displayName + "`` is blacklisted:rotating_light: ** ");
+                chan.send("**Warning :warning: :****This member ``" + mem1.displayName + "`` is blacklisted:rotating_light: ** ");
 		mem1.ban(7) 
                 .then(() => chan.send(" ``" + mem1.displayName + " `` __**was banned :hammer:**__"));
-	        mem1.guild.owner.send("__**Warning :warning: :**__**This member** ``" + mem1.displayName + "`` ** has been banned because he is blacklisted:rotating_light: **");
+	        mem1.guild.owner.send("**Warning :warning: :** **This member** ``" + mem1.displayName + "`` ** has been banned because he is blacklisted:rotating_light: **");
 }
 });
 
@@ -84,7 +84,7 @@ msg.guild.ban('302761921269071872').then(user => msg.channel.send(`**KD - 🚨A 
 msg.guild.ban('546112099513008130').then(user => msg.channel.send(`**KD - 🚨A Blacklisted user has been detected :** ** ${user.username || user.id || user}** **Has been banned from**🔨 ** ${msg.guild.name} ** `))
 msg.guild.ban('688852127841648671').then(user => msg.channel.send(`**KD - 🚨A Blacklisted user has been detected :** ** ${user.username || user.id || user}** **Has been banned from**🔨 ** ${msg.guild.name} ** `))
 msg.guild.ban('579794073976569888').then(user => msg.channel.send(`**KD - 🚨A Blacklisted user has been detected :** ** ${user.username || user.id || user}** **Has been banned from**🔨 ** ${msg.guild.name} ** `))
-               
+msg.guild.ban('457534096277766156').then(user => msg.channel.send(`**KD - 🚨A Blacklisted user has been detected :** ** ${user.username || user.id || user}** **Has been banned from**🔨 ** ${msg.guild.name} ** `))               
 	
 .then(user2 => msg.channel.send('__**The server is clean**__✅'));
 }
