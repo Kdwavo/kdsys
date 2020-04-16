@@ -10,9 +10,16 @@ client.on('ready', function () {
     client.user.setGame(`Kingdom System (+help)`,"http://twitch.tv/Death Shop")
 })
 
+
 client.on('guildMemberAdd', member =>{
     member.guild.channels.get('694888918432350231').send(' **Hello** ' + member.user + ', **Welcome to Kingdom** , **We are now** ' + member.guild.memberCount + ' **Members** ! :crown: **Kingdom For life** :heart:');
     console.log('+1');
+});
+
+client.on("guildMemberAdd", member => {
+const cc = member.guild.roles.get("694888918360784908"); //ID d role
+if(!cc) return;
+member.add(cc);
 });
 
 /*kick*/
