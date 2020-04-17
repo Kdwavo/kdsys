@@ -16,12 +16,6 @@ client.on('guildMemberAdd', member =>{
     console.log('+1');
 });
 
-client.on("guildMemberAdd", member => {
-const cc = member.guild.roles.get("694888918360784908"); //ID d role
-if(!cc) return;
-member.add(cc);
-});
-
 /*kick*/
 client.on('message', message =>{
     if (!message.guild) return
