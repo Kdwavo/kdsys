@@ -247,45 +247,44 @@ client.on("message", message => {
         message.channel.bulkDelete(parseInt(count) + 1)
     }
 
-    bot.on('message', message => {
-        let args = message.content.substring(PREFIX.length).split(" ");
-     
-        switch (args[0]) {
-            case 'mute':
-                var person  = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
-                if(!person) return  message.reply("I CANT FIND THE USER " + person)
-     
-                let mainrole = message.guild.roles.find(role => role.name === "Newbie");
-                let role = message.guild.roles.find(role => role.name === "mute");
-               
-     
-                if(!role) return message.reply("Couldn't find the mute role.")
-     
-     
-                let time = args[2];
-                if(!time){
-                    return message.reply("You didnt specify a time!");
-                }
-     
-                person.removeRole(mainrole.id)
-                person.addRole(role.id);
-     
-     
-                message.channel.send(`@${person.user.tag} has now been muted for ${ms(ms(time))}`)
-     
-                setTimeout(function(){
-                   
-                    person.addRole(mainrole.id)
-                    person.removeRole(role.id);
-                    console.log(role.id)
-                    message.channel.send(`@${person.user.tag} has been unmuted.`)
-                }, ms(time));
-     
-     
-       
-            break;
+    if (args[0].toLowerCase() === prefix +"mute") {
+        if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send("**Adak L7mar !** `You dont have the permission to use this command !` :warning: ")
+        let member = message.mentions.members.first()
+        if (!member) return message.channel.send("`I Couldn't found that member ` :warning: ")
+        if (member.highestRole.calculatedPosition >= message.member.highestRole.calculatedPosition && message.author.id !== message.guild.ownerID) return message.channel.send("`Azbi, I can't Mute this user` :warning: ")
+        if (member.highestRole.calculatedPosition >= message.guild.me.highestRole.calculatedPosition || member.id === message.guild.ownerID) return message.channel.send("`Tfo, I can't Mute this Member` :warning: ")
+        let muterole = message.guild.roles.find(role => role.name === 'Muted')
+        if (muterole) {
+            member.addRole(muterole)
+            message.channel.send(member + '`Has Been Muted` :warning: ')
         }
-     
-     
-    });
+        else {
+            message.guild.createRole({name: 'Muted', permissions: 0}).then((role) => {
+                message.guild.channels.filter(channel => channel.type === 'text').forEach(channel => {
+                    channel.overwritePermissions(role, {
+                        SEND_MESSAGES: false
+                    })
+                })
+                member.addRole(role)
+                message.channel.send(member + '`Has Been Muted` :warning: ')
+            })
+        }
+    }
+
+   
+
+    /*Unmute */
+    if(args[0].toLowerCase() === prefix + "unmute"){
+        let member = message.mentions.members.first()
+        if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send("**Adak l7mar !** `You dont have the permission to use this command !` :warning: ")
+        if(!member) return message.channel.send(" `I Couldn't found that member` ! :warning: ")
+        if(member.highestRole.calculatedPosition >= message.member.highestRole.calculatedPosition && message.author.id !== message.guild.ownerID) return message.channel.send("` A Zbi, You cant unmute this member.` :warning: ")
+        if(member.highestRole.calculatedPosition >= message.guild.me.highestRole.calculatedPosition || member.id ===  message.guild.ownerID) return message.channel.send("`Tfo, I cant unmute this member.` :warning: ")
+        let muterole = message.guild.roles.find(role => role.name === 'Muted')
+        if(muterole && member.roles.has(muterole.id)) member.removeRole(muterole)
+        message.channel.send(member + ' `Has been unmuted` :warning: ')
+    }
+
+
+    
 });
