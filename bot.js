@@ -3,7 +3,6 @@ const client = new Discord.Client();
 
 var prefix = ("+");
 
-client.login(process.env.BOT_TOKEN);
 
 client.on('ready', function () {
     console.log('Bot Connected')
