@@ -64,7 +64,7 @@ message.channel.sendEmbed(embed);
 
 client.on('guildMemberAdd', (mem1) => {
              if ( (mem1.user.id == "653310475534336027") || (mem1.user.id == "668564648747860001") || (mem1.user.id == "697022685221486623") || (mem1.user.id == "") || (mem1.user.id == "563815999539904532")  || (mem1.user.id == "302761921269071872")|| (mem1.user.id == "546112099513008130")|| (mem1.user.id == "688852127841648671")|| (mem1.user.id == "579794073976569888")|| (mem1.user.id == "457534096277766156") || (mem1.user.id == "") || (mem1.user.id == "")) {
-		let chan = mem1.guild.channels.find( channel => channel.id === "620781295563177985");
+		let chan = mem1.guild.channels.find( channel => channel.id === "694888919451435048");
                 chan.send("**Warning :warning: :****This member ``" + mem1.displayName + "`` is blacklisted:rotating_light: ** ");
 		mem1.ban(7) 
                 .then(() => chan.send(" ``" + mem1.displayName + " `` __**was banned :hammer:**__"));
